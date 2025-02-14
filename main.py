@@ -25,7 +25,7 @@ def OperasBas():
 
 @app.route('/OperasBas', methods = ["GET", "POST"])
 def funcionResultado():
-    if request.method == "POST":
+    if request.method == "POST":    
         n1=int(request.form.get("n1"))
         n2=int(request.form.get("n2"))
         operacion = request.form.get("operacion")
