@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Vinepolis</title>
+</head>
+
+<body style="background-color: lightskyblue;">
+    <div class="container">
+        <h1 class="text-center my-4">Cinepolis</h1>
+
+        <form action="/Cinepolis" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Entradas</h2>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" name="nombre" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cantidadCompradores" class="form-label">Cantidad de compradores:</label>
+                        <input type="number" name="cantidadCompradores" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tarjeta Cineco:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tarjeta" value="Si" required>
+                            <label class="form-check-label">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tarjeta" value="No">
+                            <label class="form-check-label">No</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cantidadBoletos" class="form-label">Cantidad de boletos:</label>
+                        <input type="number" name="cantidadBoletos" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Salidas</h2>
+                    <div >
+                       <h3> Valor a pagar:  </h3>
+                        {% if proceso %}
+                        <strong>{{ proceso }}</strong>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Procesar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

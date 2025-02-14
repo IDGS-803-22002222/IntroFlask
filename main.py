@@ -41,6 +41,44 @@ def funcionResultado():
     return render_template("OperasBas.html",res=res)
        
     
+@app.route('/Cinepolis', methods=["GET", "POST"])
+def Cinepolis():
+    proceso = ""
+    boletosPorPersona = 7
+    precioBoleto = 12  
+    descuento_5_boletos = 0.15  
+    descuento_3_5_boletos = 0.10  
+    descuentoTarjeta = 0.10  
+
+    if request.method == "POST":
+        nombre = request.form.get("nombre")
+        cantidadCompradores = int(request.form.get("cantidadCompradores"))
+        tarjeta = request.form.get("tarjeta")
+        cantidadBoletos = int(request.form.get("cantidadBoletos"))
+
+        if (cantidadBoletos > cantidadCompradores * boletosPorPersona):
+            proceso = "No se pueden vender mas de {} boletos por persona".format(boletosPorPersona)
+        else:
+            total = cantidadBoletos * precioBoleto
+
+            if cantidadBoletos > 5:
+                total -= total * descuento_5_boletos
+                proceso = "se desconto un 15% de descuento"
+            elif 3 <= cantidadBoletos <= 5:
+                total -= total * descuento_3_5_boletos
+                proceso = "se desconto un 10% de descuento"
+            else:
+                proceso = "no hubo descuento"
+
+            if tarjeta == "Si":
+                total -= total * descuentoTarjeta
+                proceso += " y se aplicó un 10% de descuento mas por la tarjeta"
+
+            proceso += " total a pagar: ${}".format(total)
+
+    return render_template("Cinepolis.html", proceso=proceso)
+
+  
 
 @app.route("/hola")
 def hola():
