@@ -47,7 +47,7 @@ def Alumnos():
         edad=alumno_clase.edad.data
         apellidos=alumno_clase.apellidos.data
         correo=alumno_clase.correo.data
-        mensaje="Bienvenido {}".format(nombre)
+        mensaje="Bienvenido : {}".format(nombre)
         flash(mensaje)
     return render_template("Alumnos.html", form=alumno_clase, matricula=matricula, nombre=nombre, edad=edad, apellidos=apellidos, correo=correo)
 
